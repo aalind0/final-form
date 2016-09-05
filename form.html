@@ -1,0 +1,275 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="for.css" />
+</head>
+<body>
+<script type="text/javascript" src="jquery-3.1.0.js"></script>
+<script type="text/javascript" src="fo.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	var form = $("#contactForm");
+	var reg = $('#reg');
+	var name = $("#name");
+	var Email = $("#email");
+	var programme = $("#programme");
+	var gender = $("gender");
+	var phone = $("#phone");
+	var hosteler = $("#hosteler");
+	var room = $("#room");
+	var message = $("#message");
+	var regError = $(".errorreg");
+	var nameError = $(".errorname");
+	var EmailError = $(".errorEmail");
+	var programmeError = $(".errorprogramme");
+	var genderError = $(".errorgender");
+	var phoneError = $(".errorphone");
+	var hostelerError = $(".errorhosteler");
+	var roomError = $(".errorroom");
+	var messageError = $(".errormessage");
+	var success = $(".sent");
+	
+	form.submit(function(e) {
+    e.preventDefault();
+	});
+	form.submit (function(){
+		if(validateRegistration() & validateName() & validateEmail() & validateProgramme() & validateGender()  & validatePhone() & validateHosteler() & validateMessage()){
+			success.text("Your message has been sent");
+			return true;
+		}
+		else{
+			return false;
+			}
+	});
+	
+	function validateRegistration(){
+			if(reg.val().length > 0){
+			regError.css("visibility","hidden");
+			return true;
+		}
+		else{
+	
+			regError.text("Please enter a Reg No");
+			return false;
+			}		
+	}
+			
+	
+	function validateName(){
+		if(name.val().length > 0){
+			nameError.css("visibility","hidden");
+			return true;
+		}
+		else{
+	
+			nameError.text("Please enter a name");
+			return false;
+			}		
+	}
+	
+		function validateEmail(){
+			var a = Email.val();
+			var regexp = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_­-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9­]+.[a-z]{2,4}$/;
+		
+		if(regexp.test(a)){
+			EmailError.text("");
+			return true;
+		}
+		else{
+			EmailError.text("Enter a valid Email");
+			
+			return false;
+			}		
+		}
+		
+		function validateProgramme(){
+		if(programme.val().length > 0){
+			programmeError.css("visibility","hidden");
+			return true;
+		}
+		else{
+	
+			programmeError.text("Please enter a programme");
+			return false;
+			}		
+	}
+		
+		function validateGender(){
+		if(gender.val().length > 0){
+			genderError.css("visibility","hidden");
+			return true;
+		}
+		else{
+	
+			genderError.text("Male or Female");
+			return false;
+			}		
+	}
+		
+		function validatePhone(){
+			if (phone.val().length !== 10){
+				phoneError.text("Needs to be 10 digits");
+				return false;
+				}
+			
+			else{
+				phoneError.css("visibility","hidden");
+				return true;
+			}
+			}
+		phone.keypress(function(e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        	phoneError.text("Digits Only").show().fadeOut("slow");
+               return false;
+    	}
+        });
+		
+		function validateHosteler(){
+		if(hosteler.val().length > 0){
+			hostelerError.css("visibility","hidden");
+			return true;
+		}
+		else{
+	
+			hostelerError.text("Please enter a name");
+			return false;
+			}		
+	
+	
+	    function validateRoom(){
+			if (room.val().length !== 10){
+				roomError.text("Needs to be 10 digits");
+				return false;
+				}
+			
+			else{
+				roomError.css("visibility","hidden");
+				return true;
+			}
+			}
+		room.keypress(function(e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        	roomError.text("Digits Only").show().fadeOut("slow");
+               return false;
+    	}
+        });
+		
+		function validateMessage(){
+			if(message.val().length > 0){
+				messageError.css("visibility", "hidden");
+				return true;
+			}
+			else{
+			
+				messageError.text("Please enter a message");
+				return false;
+			}
+		}
+});
+</script>
+
+<div class="container">
+    <div class="top-text">Validation Form <br><span>(Note: Fill in all the mentioned details for the form to be submitted properly.)</span></div>
+
+<form name="contactForm" action="" method="" id="contactForm">
+
+<div class="row control-group">
+  
+<label>Name</label>
+<input type="text" class="form-control" placeholder= "Name" id="name" name="Name">
+<span id="errorname" class="error errorname"></span>
+  </div>
+
+<div class="row control-group">
+                        
+<label>Registration Number</label>
+<input type="text" class="form-control" placeholder= "Registration Number (eg: 15BIT0172)" id="reg" name="Registration">
+<span id="errorreg" class="error errorreg"></span>
+  </div>
+
+
+<div class="row control-group">
+                      
+<label>Email Address</label>
+<input type="email" class="form-control" placeholder="Email Address" id="email" name="Email">
+  <span id="errorEmail" class="error errorEmail"></span>
+ </div>
+ 
+ <div class="row control-group">
+  
+<label>Programme</label>
+<input type="text" class="form-control" placeholder= "Programme (eg: BIT, BCE, etc)" id="programme" name="Programme">
+<span id="errorprogramme" class="error errorprogramme"></span>
+  </div>
+ 
+ <div class="row control-group">
+  
+<label>Gender</label>
+<input type="text" class="form-control" placeholder= "Gender (Male or Female)" id="gender" name="Gender">
+<span id="errorgender" class="error errorgender"></span>
+  </div>
+                    <div class="row control-group">
+                        
+ <label>Phone Number</label>
+ <input type="tel" class="form-control" placeholder="Phone number (10 digits)" id="phone">
+  <span id="errorname" class="error errorphone"> </span>              
+                    </div>
+         
+                        <div class="row control-group">
+                            <label>Type</label>
+                            <select>
+  <option value="home">Home</option>
+  <option value="phone">Phone</option>
+  <option value="work">Work</option>
+</select>
+                            </div>
+							
+<div class="row control-group">
+  
+<label>Hosteler</label>
+<input type="text" class="form-control" placeholder= "Hosteler (Yes or No)" id="hosteler" name="Hosteler">
+<span id="errorhosteler" class="error errorhosteler"></span>
+  </div>
+  
+  <div class="row control-group">
+                            <label>Type</label>
+                            <select>
+  <option value="lblock">L-Block</option>
+  <option value="gblock">G-Block</option>
+  <option value="dblock">D-Block</option>
+  <option value="jblock">J-Block</option>
+  <option value="hblock">H-Block</option>
+  <option value="eblock">E-Block</option>
+  <option value="kblock">K-Block</option>
+  <option value="fblock">F-Block</option>
+  <option value="ablock">A-Block</option>
+</select>
+                            </div>
+							
+ <div class="row control-group">
+                        
+ <label>Room Number</label>
+ <input type="integer" class="form-control" placeholder="Room Number" id="room">
+  <span id="errorroom" class="error errorroom"> </span>              
+                    </div>
+							
+  <div class="row control-group">
+                        
+  <label>Message</label>
+  <textarea rows="5" class="form-control" placeholder="Message" id="message" ></textarea>
+    <span id="errorname" class="error errormessage"></span>                        
+  </div>
+  
+                        
+<div class="success">
+  <span id="sentmessage" class="sent"></span> 
+  </div>
+<div class="row">
+<div class="form-group">
+<button type="submit" class="btn">Send</button>
+                        </div>
+                    </div>
+                </form>
+                        </div>
+</body>
+</html>

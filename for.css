@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+.container{
+    margin:0 auto;
+    width: 60%;
+    max-width:500px;
+    min-width:450px;
+    text-align:left;
+    font-family:"Segoe ui";
+    padding-bottom: 30px;
+}
+.top-text{
+    padding:20px 0;
+    text-align:center;
+    font-size:25px;
+  color:#40dbe5;
+}
+span{
+    color:#888;
+    font-size:12px;
+}
+form{
+  padding-top: 15px;
+  }
+
+input,
+textarea,
+select,
+input:hover,
+input:focus,
+input:active{
+    border:none;
+    outline:none;
+}
+textarea{
+    border-bottom:1px solid #ccc;
+    width:100%;
+}
+.control-group{
+    padding: 15px 0 18px 0;
+    border-top: 1px solid #ccc;
+
+}
+button{
+    padding:10px;
+    width:200px;
+	cursor:pointer;
+    background:#40dbe5;
+    border: 1px solid #40dbe5;
+    border-radius:20px;
+    color:#fff;
+	margin:0 auto;
+	display:block;
+	}
+
+button:hover,
+button:focus{
+    opacity:.8;
+    cursor:pointer;
+	outline:none;
+}
+label{
+  visibility:hidden;
+  display:block;
+  height:0px;
+}
+input{
+  width:70%;
+}
+.error{
+  color:#ff0000;
+ 
+}
+.success{
+  padding-bottom:5px;
+  margin:0px 25% 0 25%;/*can also be 0 auto*/
+  width:50%;
+  text-align:center;
+}
+.sent{
+  color:#00ff00;
+ 
+}
